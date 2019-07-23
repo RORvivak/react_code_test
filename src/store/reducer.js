@@ -8,10 +8,11 @@ const reducer = (state = initialstate, action) => {
         switch(action.type){
             case "Pusher":{
                 let payload = action.payload
-                state.results.push({title: payload.title, description: payload.description, status: "created"})
-                let id = state.results.length
+                let id = state.results.length + 1
+                state.results.push({title: payload.title, description: payload.description, status: "created", id: id})
+               
                 console.log(state)
-                return({...state, id: id})
+                return({...state})
             }
 
             default:
