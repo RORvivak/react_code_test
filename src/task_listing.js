@@ -10,11 +10,16 @@ class  TaskListing extends Component {
             <tr>
                 <td>Title</td>
                 <td>Description</td>
+                <td>Assign</td>
              </tr>   
        { this.props.ctr.map((e,i)=>{
+           let button = <button onClick =  { () => this.props.assign(e.id)}>Assign</button>
+           if(e.status != "created")
+            {button  = "Already assigned" }
             return(<tr>
                 <td>{e.title}</td>
                 <td>{e.description}</td>
+                <td>{button}</td>
             </tr>)
         })}
         </table>
@@ -36,8 +41,8 @@ const mapStateToProps = (state) => {
   const mapActionToProps = (dispatch) => {
     return(
         {
-          resultPush: (value) => {
-                return(dispatch({type: "Pusher", payload:  {title: value.title, description: value.description}}))
+          assign: (id) => {
+                return(dispatch({type: "assing_task", payload:  {id: id}}))
             }
 
             

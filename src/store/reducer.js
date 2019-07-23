@@ -15,6 +15,18 @@ const reducer = (state = initialstate, action) => {
                 return({...state})
             }
 
+            case "assing_task":{
+                let assign_state = [...state.results]
+                // console.log(assign_state)
+                assign_state.map((e)=>{
+                    if(e.id == action.payload.id)
+                    {
+                        e.status = "Assigned"
+                    }
+                })
+                return({...state, results: assign_state})
+            }
+
             default:
                 {
                     return(state)

@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
-import TaskCreeator from './task_creator';
+import TaskCreator from './task_creator';
 import { connect } from 'react-redux';
+
+
 
 class App extends Component {
   
@@ -19,10 +21,11 @@ class App extends Component {
   render() {
   
     return (
-      <TaskCreeator valueSet={this.ticketValues} submit={ (event) => {
+      <TaskCreator valueSet={this.ticketValues} submit={ (event) => {
         event.preventDefault();
         this.props.resultPush({title: this.state.title, description: this.state.description})}
       }/>
+     
     );
   }
 }
